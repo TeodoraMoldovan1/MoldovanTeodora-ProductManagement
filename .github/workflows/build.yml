@@ -31,14 +31,14 @@ jobs:
 
     - name: Create ZIP of build output
       run: |
-        if (-not (Test-Path "C:\Documents\deploy_directory")) {
+        if (-not (Test-Path "C:\deploy_directory")) {
           New-Item -ItemType Directory -Path "C:\Documents\deploy_directory"
         }
-        Compress-Archive -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\* -DestinationPath C:\Documents\deploy_directory\product.zip
+        Compress-Archive -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\* -DestinationPath C:\deploy_directory\product.zip
 
     - name: Deploy Application
       run: |
-        if (-not (Test-Path "C:\Documents\deploy_directory")) {
-          New-Item -ItemType Directory -Path "C:\Documents\deploy_directory"
+        if (-not (Test-Path "C:\deploy_directory")) {
+          New-Item -ItemType Directory -Path "C:\deploy_directory"
         }
-        Copy-Item -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\*.* -Destination C:\Documents\deploy_directory\ -Force
+        Copy-Item -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\*.* -Destination C:\deploy_directory\ -Force

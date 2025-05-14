@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and Run Tests on Windows
+    name: Build and Run Tests for ProductManagement Application
     runs-on: windows-latest
 
     steps:

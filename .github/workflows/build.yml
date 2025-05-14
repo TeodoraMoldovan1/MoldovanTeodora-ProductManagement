@@ -36,3 +36,7 @@ jobs:
           New-Item -ItemType Directory -Path $deployPath
         }
         Copy-Item -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\*.* -Destination $deployPath -Force
+        Write-Host "Fisierele copiate:"
+        Get-ChildItem -Path $deployPath
+        Get-ChildItem -Path $deployPath | Out-File -FilePath "$deployPath\copied_files.txt"
+    

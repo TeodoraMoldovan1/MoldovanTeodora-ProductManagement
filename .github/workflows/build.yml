@@ -32,7 +32,7 @@ jobs:
     - name: Create ZIP of build output
       run: |
         if (-not (Test-Path "C:\deploy_directory")) {
-          New-Item -ItemType Directory -Path "C:\Documents\deploy_directory"
+          New-Item -ItemType Directory -Path "C:\deploy_directory"
         }
         Compress-Archive -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\* -DestinationPath C:\deploy_directory\product.zip
 

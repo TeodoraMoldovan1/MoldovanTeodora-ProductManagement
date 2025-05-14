@@ -29,16 +29,10 @@ jobs:
         cd ProductManagementUnitTests
         dotnet test --configuration Release
 
-    - name: Create ZIP of build output
-      run: |
-        if (-not (Test-Path "D:\deploy_directory")) {
-          New-Item -ItemType Directory -Path "D:\deploy_directory"
-        }
-        Compress-Archive -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\* -DestinationPath D:\deploy_directory\product.zip
-
     - name: Deploy Application
       run: |
-        if (-not (Test-Path "D:\deploy_directory")) {
-          New-Item -ItemType Directory -Path "D:\deploy_directory"
+        $deployPath = "C:\Users\teodo\deploy_directory"
+        if (-not (Test-Path $deployPath)) {
+          New-Item -ItemType Directory -Path $deployPath
         }
-        Copy-Item -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\*.* -Destination D:\deploy_directory\ -Force
+        Copy-Item -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\*.* -Destination $deployPath -Force

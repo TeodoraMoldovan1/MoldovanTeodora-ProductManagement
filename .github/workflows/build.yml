@@ -36,9 +36,3 @@ jobs:
           New-Item -ItemType Directory -Path $deployPath
         }
         Copy-Item -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\*.* -Destination $deployPath -Force
-
-    - name: Upload deployment folder as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: deployed-build
-        path: C:\Users\teodo\deploy_directory\

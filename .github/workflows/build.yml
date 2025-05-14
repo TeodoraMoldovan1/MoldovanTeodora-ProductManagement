@@ -22,9 +22,18 @@ jobs:
       run: nuget restore ProductManagement.sln
 
     - name: Build solution
-      run: msbuild ProductManagement.sln /p:Configuration=Release
+      run: msbuild ProductManagement.sln /p:Configuration=Release /p:OutputPath="C:\Users\teodo\source\repos\Tema2-master\bin\Debug"
 
     - name: Run Unit Tests
       run: |
         cd ProductManagementUnitTests
         dotnet test --configuration Release
+
+    - name: Create ZIP of build output
+      run: |
+        Compress-Archive -Path C:\Users\teodo\source\repos\Tema2-master\bin\Debug\* -DestinationPath C:\Documents\deploy_directory\product.zip
+
+    - name: Deploy Application
+      run: |
+        if not exist C:\Documents\deploy_directory mkdir C:\Documents\deploy_directory
+        copy /Y C:\Users\teodo\source\repos\Tema2-master\bin\Debug\*.* C:\Documents\deploy_directory\

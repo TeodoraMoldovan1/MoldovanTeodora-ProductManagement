@@ -24,6 +24,10 @@ jobs:
     - name: Build solution
       run: msbuild ProductManagement.sln /p:Configuration=Release
 
+    - name: Install Visual Studio Test Platform
+      run: |
+        choco install vstest.console --version=16.11.0
+
     - name: Run Unit Tests
       run: |
         cd ProductManagementUnitTests

@@ -1,0 +1,30 @@
+name: Build .NET Framework 4.8 App and Run Unit Tests
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    name: Build and Run Tests on Windows
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.3.1
+
+    - name: Restore NuGet packages
+      run: nuget restore ProductManagementApp.sln
+
+    - name: Build solution
+      run: msbuild ProductManagement.sln /p:Configuration=Release
+
+    - name: Run Unit Tests
+      run: |
+        cd ProductManagementUnitTests
+        "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\TestPlatform\vstest.console.exe" bin\Release\ProductManagementUnitTests.dll

@@ -22,7 +22,7 @@ jobs:
       run: nuget restore ProductManagement.sln
 
     - name: Build solution
-      run: msbuild ProductManagement.sln /p:Configuration=Release /p:OutputPath="C:\Users\teodo\source\repos\Tema2-master\bin\Debug"
+      run: msbuild ProductManagement.sln /p:Configuration=Debug /p:OutputPath="C:\Users\teodo\source\repos\Tema2-master\bin\Debug"
 
     - name: Run Unit Tests
       run: |

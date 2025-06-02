@@ -39,4 +39,11 @@ jobs:
         Write-Host "Fisierele copiate:"
         Get-ChildItem -Path $deployPath
         Get-ChildItem -Path $deployPath | Out-File -FilePath "$deployPath\copied_files.txt"
+        
+    - name: Upload Deployment Files
+        uses: actions/upload-artifact@v4
+        with:
+            name: deployment-files
+            path: C:\Users\teodo\deploy_directory
+
     

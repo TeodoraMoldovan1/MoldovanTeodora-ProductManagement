@@ -26,7 +26,7 @@ jobs:
 
     - name: Run Unit Tests
       run: |
-        cd C:\Users\teodo\source\repos\Tema2-master\ProductManagementUnitTests
+        cd ProductManagementUnitTests
         dotnet test --configuration Release
 
     - name: Deploy Application

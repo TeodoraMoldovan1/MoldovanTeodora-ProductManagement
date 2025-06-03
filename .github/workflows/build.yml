@@ -24,10 +24,8 @@ jobs:
     - name: Build solution
       run: msbuild ProductManagement.sln /p:Configuration=Debug /p:OutputPath="C:\Users\teodo\source\repos\Tema2-master\bin\Debug"
 
-    - name: Run Unit Tests
-      run: |
-        cd ProductManagementUnitTests
-        dotnet test --configuration Release
+    - name: Run unit tests
+      run: dotnet test Tema2-master.sln --configuration Release --logger "trx"
 
     - name: Deploy Application
       run: |
